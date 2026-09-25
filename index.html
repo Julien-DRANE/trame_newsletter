@@ -82,7 +82,9 @@
 
         <p class="section-title">Contenu</p>
         <label>Texte de présentation<textarea id="introText">Présentez brièvement le sujet et l’idée principale de votre article.</textarea></label>
-        <label>Photos de l’article<input id="articleImage" type="file" accept="image/png,image/jpeg,image/webp" multiple /><span class="field-note">La première image est intégrée au texte. Chaque image suivante commence sur une nouvelle page du PDF.</span></label>
+        <label>Photo — page 1<input id="pageImage1" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Insérée à droite du corps de l’article.</span></label>
+        <label>Photo — page 2<input id="pageImage2" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Commence une nouvelle page dans le PDF.</span></label>
+        <label>Photo — page 3<input id="pageImage3" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Commence une nouvelle page dans le PDF.</span></label>
         <label>Corps de l’article<textarea id="bodyText">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</textarea></label>
         <label>Conclusion, ressource ou citation <textarea id="quote">Une phrase importante ou une citation peut trouver sa place ici.</textarea></label>
 
@@ -124,7 +126,7 @@
       const ids = ["category", "title", "subtitle", "author", "date", "introText", "bodyText", "quote"];
       const names = { category: "previewCategory", title: "previewTitle", subtitle: "previewSubtitle", introText: "previewIntro", bodyText: "previewBody", quote: "previewQuote" };
       const fields = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
-      const imageField = document.getElementById("articleImage");
+      const imageFields = ["pageImage1", "pageImage2", "pageImage3"].map(id => document.getElementById(id));
       const previewImage = document.getElementById("previewImage");
       const articleContent = document.getElementById("articleContent");
       const additionalImages = document.getElementById("additionalImages");
@@ -152,27 +154,27 @@
         update();
       }
       ids.forEach(id => fields[id].addEventListener("input", update));
-      imageField.addEventListener("change", async () => {
-        const files = [...imageField.files];
+      const readFile = file => new Promise(resolve => { const reader = new FileReader(); reader.addEventListener("load", () => resolve(reader.result)); reader.readAsDataURL(file); });
+      async function updateImages() {
         additionalImages.replaceChildren();
-        if (!files.length) { previewImage.removeAttribute("src"); previewImage.classList.remove("is-visible"); articleContent.classList.remove("has-image"); return; }
-        const readFile = file => new Promise(resolve => { const reader = new FileReader(); reader.addEventListener("load", () => resolve(reader.result)); reader.readAsDataURL(file); });
-        const imageUrls = await Promise.all(files.map(readFile));
-        previewImage.src = imageUrls[0];
-        previewImage.classList.add("is-visible");
-        articleContent.classList.add("has-image");
-        imageUrls.slice(1).forEach((url, index) => {
+        const files = imageFields.map(field => field.files[0] || null);
+        if (files[0]) { previewImage.src = await readFile(files[0]); previewImage.classList.add("is-visible"); articleContent.classList.add("has-image"); }
+        else { previewImage.removeAttribute("src"); previewImage.classList.remove("is-visible"); articleContent.classList.remove("has-image"); }
+        for (let index = 1; index < files.length; index += 1) {
+          if (!files[index]) continue;
+          const url = await readFile(files[index]);
           const figure = document.createElement("figure");
           figure.className = "additional-image";
           const image = document.createElement("img");
           image.src = url;
-          image.alt = `Illustration ${index + 2} de l’article`;
+          image.alt = `Illustration de la page ${index + 1}`;
           const caption = document.createElement("figcaption");
-          caption.textContent = `Illustration ${index + 2}`;
+          caption.textContent = `Illustration — page ${index + 1}`;
           figure.append(image, caption);
           additionalImages.append(figure);
-        });
-      });
+        }
+      }
+      imageFields.forEach(field => field.addEventListener("change", updateImages));
       document.querySelectorAll('input[name="background"]').forEach(input => input.addEventListener("change", update));
       document.getElementById("print").addEventListener("click", () => window.print());
       document.getElementById("reset").addEventListener("click", () => { localStorage.removeItem("newsletter-draft"); location.reload(); });
