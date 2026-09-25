@@ -1,0 +1,17 @@
+[hidden]{display:none!important}
+.preview-area{display:block;padding:28px;overflow:auto}
+.sheet{position:relative;width:794px;height:1122px;padding:100px 62px 64px;margin:0 auto 28px;background:white var(--paper) center/100% 100% no-repeat;color:#263d5c;box-shadow:0 6px 28px #21385225;box-sizing:border-box}
+.sheet .logos{top:24px;left:60px;right:60px}
+.sheet .logo-academique{width:118px;height:55px}.sheet .logo-drane{width:112px;height:43px}
+.sheet .category{font-size:13px;margin-bottom:18px}
+.sheet .headline{font-size:42px;line-height:1.08;max-width:100%;letter-spacing:-1.3px}
+.sheet .subtitle{font-size:23px;margin:15px 0;max-width:100%}
+.sheet .metadata{font-size:11px;margin-bottom:27px}
+.flow{font:400 16px/1.48 Marianne,Arial,sans-serif;overflow-wrap:anywhere;display:flow-root}
+.flow p,.flow div{margin:0 0 12px}.flow h2,.flow h3{font-size:23px;line-height:1.25;margin:18px 0 12px}.flow ul,.flow ol{padding-left:25px;margin:0 0 12px}.flow li{margin-bottom:4px}
+.flow .photo{float:right;width:43%;height:240px;object-fit:cover;margin:0 0 16px 22px;shape-outside:inset(0)}
+.flow .photo.left{float:left;margin:0 22px 16px 0}
+.flow .quote{clear:both;font-size:19px;line-height:1.4;margin:22px 0 0;padding:12px 0 12px 18px}
+.page-number{position:absolute;bottom:24px;right:62px;font-size:11px;color:#56769a}
+.sheet .flow:after{content:'';display:block;clear:both}
+@media print{@page{size:A4;margin:0}html,body{margin:0;padding:0}.editor{display:none!important}.app,.preview-area{display:block!important;margin:0;padding:0;overflow:visible}.sheet{width:794px;height:1122px;margin:0;box-shadow:none;break-after:page;break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}.sheet:last-child{break-after:auto}}

@@ -1,0 +1,11 @@
+const fs=require('fs'),path=require('path');
+const root=__dirname;
+let html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+html=html.replace('<link rel="stylesheet" href="layout.css">','<style>'+fs.readFileSync(path.join(root,'layout.css'),'utf8')+'</style>');
+html=html.replace('<script src="app.js"></script>','<script>'+fs.readFileSync(path.join(root,'app.js'),'utf8')+'</script>');
+const backgrounds={};
+for(const name of fs.readdirSync(path.join(root,'assets/backgrounds')))backgrounds[name.replace('.png','')]='data:image/png;base64,'+fs.readFileSync(path.join(root,'assets/backgrounds',name)).toString('base64');
+html=html.replace('const $=id=>', 'const embeddedBackgrounds='+JSON.stringify(backgrounds)+';\nconst $=id=>');
+html=html.replace('assets/backgrounds/${s.background}.png','${embeddedBackgrounds[s.background]}');
+html=html.replace(/assets\/(fonts|logos|backgrounds)\/[^"')]+\.(otf|png)/g,p=>'data:'+(p.endsWith('.otf')?'font/otf':'image/png')+';base64,'+fs.readFileSync(path.join(root,p)).toString('base64'));
+fs.writeFileSync(path.join(root,'Newsletter-autonome.html'),html);
