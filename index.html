@@ -27,6 +27,13 @@
       textarea { min-height: 116px; resize: vertical; }
       input[type="file"] { padding: 8px; font-size: 12px; }
       .field-note { display: block; margin-top: 5px; color: #6c7f96; font-size: 11px; font-weight: 400; line-height: 1.35; }
+      .rich-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-top: 6px; padding: 6px; border: 1px solid #cbd8e6; border-bottom: 0; border-radius: 7px 7px 0 0; background: #f4f8fc; }
+      .rich-toolbar button { min-width: 30px; padding: 5px 8px; border: 1px solid #c3d2e3; border-radius: 4px; background: #fff; color: #315274; font-size: 12px; }
+      .rich-toolbar select { display: inline-block; width: auto; margin: 0; padding: 4px; border-radius: 4px; font-size: 12px; }
+      .rich-toolbar input[type="color"] { width: 31px; height: 28px; margin: 0; padding: 2px; border-radius: 4px; cursor: pointer; }
+      .rich-editor { min-height: 102px; padding: 10px 11px; border: 1px solid #cbd8e6; border-radius: 0 0 7px 7px; background: #fff; color: #1f3653; font: 400 14px/1.4 Marianne, Arial, sans-serif; outline: none; }
+      .rich-editor:focus { box-shadow: 0 0 0 3px #c5dcf8; border-color: #6594cd; }
+      .rich-editor ul, .rich-editor ol { margin: 5px 0; padding-left: 23px; }
       .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .backgrounds { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .background-choice { position: relative; display: block; margin: 0; cursor: pointer; }
@@ -49,7 +56,8 @@
       .metadata { color: #6a89b0; font-size: clamp(9px, 1.3vw, 15px); font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
       .article { max-width: 94%; margin-top: clamp(58px, 8vw, 91px); }
       .article h2 { margin: 0 0 17px; font-size: clamp(20px, 2.6vw, 31px); font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
-      .article p { margin: 0 0 19px; color: #344d6d; font-size: clamp(14px, 1.7vw, 18px); line-height: 1.62; white-space: pre-wrap; overflow-wrap: break-word; }
+      .article p, .rich-preview { margin: 0 0 19px; color: #344d6d; font-size: clamp(14px, 1.7vw, 18px); line-height: 1.62; white-space: pre-wrap; overflow-wrap: break-word; }
+      .rich-preview ul, .rich-preview ol { margin: 0 0 19px; padding-left: 25px; white-space: normal; }
       .article-content { display: block; margin-top: 10px; }
       .article-content::after { content: ""; display: block; clear: both; }
       .article-content p { margin-bottom: 0; }
@@ -81,12 +89,22 @@
         </div>
 
         <p class="section-title">Contenu</p>
-        <label>Texte de présentation<textarea id="introText">Présentez brièvement le sujet et l’idée principale de votre article.</textarea></label>
+        <label>Titre du texte de présentation<input id="sectionTitle" value="Texte de présentation" /></label>
+        <label>Texte de présentation
+          <div class="rich-toolbar" data-editor="introText"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
+          <div class="rich-editor" id="introText" contenteditable="true">Présentez brièvement le sujet et l’idée principale de votre article.</div>
+        </label>
         <label>Photo — page 1<input id="pageImage1" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Insérée à droite du corps de l’article.</span></label>
         <label>Photo — page 2<input id="pageImage2" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Commence une nouvelle page dans le PDF.</span></label>
         <label>Photo — page 3<input id="pageImage3" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Commence une nouvelle page dans le PDF.</span></label>
-        <label>Corps de l’article<textarea id="bodyText">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</textarea></label>
-        <label>Conclusion, ressource ou citation <textarea id="quote">Une phrase importante ou une citation peut trouver sa place ici.</textarea></label>
+        <label>Corps de l’article
+          <div class="rich-toolbar" data-editor="bodyText"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
+          <div class="rich-editor" id="bodyText" contenteditable="true">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</div>
+        </label>
+        <label>Conclusion, ressource ou citation
+          <div class="rich-toolbar" data-editor="quote"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#3f6492" aria-label="Couleur du texte" /></div>
+          <div class="rich-editor" id="quote" contenteditable="true">Une phrase importante ou une citation peut trouver sa place ici.</div>
+        </label>
 
         <p class="section-title">Fond graphique</p>
         <div class="backgrounds" id="backgrounds">
@@ -110,11 +128,11 @@
           <p class="subtitle" id="previewSubtitle"></p>
           <div class="metadata" id="previewMeta"></div>
           <div class="article">
-            <h2>Texte de présentation</h2>
-            <p id="previewIntro"></p>
+            <h2 id="previewSectionTitle"></h2>
+            <div class="rich-preview" id="previewIntro"></div>
             <div class="article-content" id="articleContent">
               <img class="article-image" id="previewImage" alt="Illustration de l’article" />
-              <p id="previewBody"></p>
+              <div class="rich-preview" id="previewBody"></div>
             </div>
             <blockquote class="quote" id="previewQuote"></blockquote>
             <div class="additional-images" id="additionalImages"></div>
@@ -123,8 +141,10 @@
       </section>
     </main>
     <script>
-      const ids = ["category", "title", "subtitle", "author", "date", "introText", "bodyText", "quote"];
-      const names = { category: "previewCategory", title: "previewTitle", subtitle: "previewSubtitle", introText: "previewIntro", bodyText: "previewBody", quote: "previewQuote" };
+      const ids = ["category", "title", "subtitle", "author", "date", "sectionTitle"];
+      const names = { category: "previewCategory", title: "previewTitle", subtitle: "previewSubtitle", sectionTitle: "previewSectionTitle" };
+      const editorIds = ["introText", "bodyText", "quote"];
+      const editorTargets = { introText: "previewIntro", bodyText: "previewBody", quote: "previewQuote" };
       const fields = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
       const imageFields = ["pageImage1", "pageImage2", "pageImage3"].map(id => document.getElementById(id));
       const previewImage = document.getElementById("previewImage");
@@ -132,6 +152,7 @@
       const additionalImages = document.getElementById("additionalImages");
       const formatDate = value => value ? new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(value + "T12:00:00")).replace(".", "") : "";
       function setText(target, value) { target.textContent = value || ""; target.classList.toggle("empty", !value); }
+      function setRichText(target, value) { target.innerHTML = value || ""; target.classList.toggle("empty", !target.textContent.trim()); }
       function fitTitle() {
         const title = document.getElementById("previewTitle");
         const length = title.textContent.trim().length;
@@ -139,21 +160,44 @@
       }
       function update() {
         Object.entries(names).forEach(([field, target]) => setText(document.getElementById(target), fields[field].value));
+        editorIds.forEach(id => setRichText(document.getElementById(editorTargets[id]), document.getElementById(id).innerHTML));
         const author = fields.author.value ? `PAR ${fields.author.value}` : "";
         const date = formatDate(fields.date.value);
         setText(document.getElementById("previewMeta"), [author, date].filter(Boolean).join("   |   "));
         const selected = document.querySelector('input[name="background"]:checked').value;
         document.getElementById("page").style.setProperty("--background", `url("assets/backgrounds/${selected}.png")`);
-        localStorage.setItem("newsletter-draft", JSON.stringify(Object.fromEntries(ids.map(id => [id, fields[id].value]).concat([["background", selected]]))));
+        localStorage.setItem("newsletter-draft", JSON.stringify(Object.fromEntries(ids.map(id => [id, fields[id].value]).concat(editorIds.map(id => [id, document.getElementById(id).innerHTML]), [["background", selected]]))));
         fitTitle();
       }
       function restore() {
         const saved = JSON.parse(localStorage.getItem("newsletter-draft") || "null");
-        if (saved) { ids.forEach(id => { if (saved[id] !== undefined) fields[id].value = saved[id]; }); const bg = document.querySelector(`input[value="${saved.background}"]`); if (bg) bg.checked = true; }
+        if (saved) { ids.forEach(id => { if (saved[id] !== undefined) fields[id].value = saved[id]; }); editorIds.forEach(id => { if (saved[id] !== undefined) document.getElementById(id).innerHTML = saved[id]; }); const bg = document.querySelector(`input[value="${saved.background}"]`); if (bg) bg.checked = true; }
         if (!fields.date.value) fields.date.value = new Date().toISOString().slice(0, 10);
         update();
       }
       ids.forEach(id => fields[id].addEventListener("input", update));
+      editorIds.forEach(id => document.getElementById(id).addEventListener("input", update));
+      function rememberSelection(editor) {
+        const selection = window.getSelection();
+        if (selection.rangeCount && editor.contains(selection.anchorNode)) editor.savedRange = selection.getRangeAt(0).cloneRange();
+      }
+      function focusEditor(editor) {
+        editor.focus();
+        if (editor.savedRange) { const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(editor.savedRange); }
+      }
+      editorIds.forEach(id => ["keyup", "mouseup", "focus"].forEach(event => document.getElementById(id).addEventListener(event, () => rememberSelection(document.getElementById(id)))));
+      document.querySelectorAll(".rich-toolbar").forEach(toolbar => {
+        const editor = document.getElementById(toolbar.dataset.editor);
+        toolbar.querySelectorAll("button[data-command]").forEach(button => button.addEventListener("mousedown", event => { event.preventDefault(); focusEditor(editor); document.execCommand(button.dataset.command, false); update(); }));
+        const size = toolbar.querySelector("[data-size]");
+        size.addEventListener("mousedown", () => rememberSelection(editor));
+        size.addEventListener("change", () => { if (size.value !== "3" || size.selectedIndex > 0) { focusEditor(editor); document.execCommand("fontSize", false, size.value); update(); } });
+        const color = toolbar.querySelector('input[type="color"]');
+        const storedColors = JSON.parse(localStorage.getItem("newsletter-editor-colors") || "{}");
+        if (storedColors[editor.id]) color.value = storedColors[editor.id];
+        color.addEventListener("mousedown", () => rememberSelection(editor));
+        color.addEventListener("input", () => { focusEditor(editor); document.execCommand("foreColor", false, color.value); storedColors[editor.id] = color.value; localStorage.setItem("newsletter-editor-colors", JSON.stringify(storedColors)); update(); });
+      });
       const readFile = file => new Promise(resolve => { const reader = new FileReader(); reader.addEventListener("load", () => resolve(reader.result)); reader.readAsDataURL(file); });
       async function updateImages() {
         additionalImages.replaceChildren();
