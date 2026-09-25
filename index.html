@@ -36,6 +36,16 @@
       .rich-editor { min-height: 102px; padding: 10px 11px; border: 1px solid #cbd8e6; border-radius: 0 0 7px 7px; background: #fff; color: #1f3653; font: 400 14px/1.4 Marianne, Arial, sans-serif; outline: none; }
       .rich-editor:focus { box-shadow: 0 0 0 3px #c5dcf8; border-color: #6594cd; }
       .rich-editor ul, .rich-editor ol { margin: 5px 0; padding-left: 23px; }
+      .body-editor-panel { position: relative; }
+      .body-editor-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .body-editor-heading button { padding: 6px 9px; border: 1px solid #b9cce2; border-radius: 5px; background: #eff5fb; color: #315b8f; font-size: 11px; }
+      #collapseBody { display: none; }
+      body.body-editor-open .body-editor-panel { position: fixed; inset: 24px; z-index: 30; display: flex; flex-direction: column; padding: 26px; overflow: hidden; border-radius: 12px; background: #fff; box-shadow: 0 18px 60px #1e38588c; }
+      body.body-editor-open .body-editor-panel .editor-field { display: flex; flex: 1; min-height: 0; flex-direction: column; }
+      body.body-editor-open .body-editor-panel .rich-editor { flex: 1; min-height: 0; overflow-y: auto; font-size: 19px; line-height: 1.6; }
+      body.body-editor-open #expandBody { display: none; }
+      body.body-editor-open #collapseBody { display: inline-block; }
+      @media (max-width: 640px) { body.body-editor-open .body-editor-panel { inset: 8px; padding: 16px; } body.body-editor-open .body-editor-panel .rich-editor { font-size: 17px; } }
       .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .backgrounds { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .background-choice { position: relative; display: block; margin: 0; cursor: pointer; }
@@ -101,26 +111,20 @@
           <div class="rich-editor" id="introText" contenteditable="true">Présentez brièvement le sujet et l’idée principale de votre article.</div>
         </div>
         <label>Photo — page 1<input id="pageImage1" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Insérée à droite du corps de l’article.</span></label>
-        <div class="editor-field"><span class="field-label">Corps de l’article</span>
-          <div class="rich-toolbar" data-editor="bodyText"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
-          <div class="rich-editor" id="bodyText" contenteditable="true">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</div>
+        <div class="body-editor-panel">
+          <div class="body-editor-heading"><span class="field-label">Corps de l’article</span><span><button id="expandBody" type="button">Éditer en grand</button><button id="collapseBody" type="button">Fermer</button></span></div>
+          <div class="editor-field">
+            <div class="rich-toolbar" data-editor="bodyText"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
+            <div class="rich-editor" id="bodyText" contenteditable="true">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</div>
+          </div>
         </div>
         <div class="editor-field"><span class="field-label">Conclusion, ressource ou citation</span>
           <div class="rich-toolbar" data-editor="quote"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#3f6492" aria-label="Couleur du texte" /></div>
           <div class="rich-editor" id="quote" contenteditable="true">Une phrase importante ou une citation peut trouver sa place ici.</div>
         </div>
-        <p class="section-title">Suite de l’article — page 2</p>
-        <label>Photo — page 2<input id="pageImage2" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Illustration placée à droite du texte de la suite.</span></label>
-        <div class="editor-field"><span class="field-label">Texte — page 2</span>
-          <div class="rich-toolbar" data-editor="page2Text"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
-          <div class="rich-editor" id="page2Text" contenteditable="true"></div>
-        </div>
-        <p class="section-title">Suite de l’article — page 3</p>
-        <label>Photo — page 3<input id="pageImage3" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Illustration placée à droite du texte de la suite.</span></label>
-        <div class="editor-field"><span class="field-label">Texte — page 3</span>
-          <div class="rich-toolbar" data-editor="page3Text"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
-          <div class="rich-editor" id="page3Text" contenteditable="true"></div>
-        </div>
+        <p class="section-title">Illustrations de la suite</p>
+        <label>Photo — page 2<input id="pageImage2" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Placée au milieu à droite du texte qui se poursuit automatiquement.</span></label>
+        <label>Photo — page 3<input id="pageImage3" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Placée plus bas à gauche, dans la suite du même texte.</span></label>
 
         <p class="section-title">Fond graphique</p>
         <div class="backgrounds" id="backgrounds">
@@ -130,7 +134,8 @@
           <label class="background-choice"><input type="radio" name="background" value="cercles-fins" /><span><img src="assets/backgrounds/cercles-fins.png" alt="Fond aux cercles fins" />Cercles fins</span></label>
           <label class="background-choice"><input type="radio" name="background" value="arc-lateral" /><span><img src="assets/backgrounds/arc-lateral.png" alt="Fond à arc latéral" />Arc latéral</span></label>
         </div>
-        <div class="actions"><button class="secondary" id="reset" type="button">Réinitialiser</button><button class="primary" id="print" type="button">Imprimer / PDF</button></div>
+        <div class="actions"><button class="secondary" id="exportJson" type="button">Exporter JSON</button><button class="secondary" id="importJson" type="button">Importer JSON</button><button class="secondary" id="reset" type="button">Réinitialiser</button><button class="primary" id="print" type="button">Imprimer / PDF</button></div>
+        <input id="importFile" type="file" accept="application/json,.json" hidden />
       </aside>
 
       <section class="preview-area" aria-label="Prévisualisation">
@@ -182,8 +187,8 @@
     <script>
       const ids = ["category", "title", "subtitle", "author", "date", "sectionTitle"];
       const names = { category: "previewCategory", title: "previewTitle", subtitle: "previewSubtitle", sectionTitle: "previewSectionTitle" };
-      const editorIds = ["introText", "bodyText", "quote", "page2Text", "page3Text"];
-      const editorTargets = { introText: "previewIntro", bodyText: "previewBody", quote: "previewQuote", page2Text: "previewPage2Text", page3Text: "previewPage3Text" };
+      const editorIds = ["introText", "bodyText", "quote"];
+      const editorTargets = { introText: "previewIntro", quote: "previewQuote" };
       const fields = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
       const imageFields = ["pageImage1", "pageImage2", "pageImage3"].map(id => document.getElementById(id));
       const previewImages = ["previewImage", "previewImage2", "previewImage3"].map(id => document.getElementById(id));
@@ -197,16 +202,55 @@
         const length = title.textContent.trim().length;
         title.style.fontSize = length > 120 ? "clamp(29px, 3.8vw, 46px)" : length > 75 ? "clamp(32px, 4.5vw, 55px)" : "";
       }
-      function updateContinuationVisibility() {
-        [1, 2].forEach(index => {
-          const hasImage = Boolean(imageFields[index].files[0]);
-          const hasText = Boolean(document.getElementById(index === 1 ? "page2Text" : "page3Text").textContent.trim());
-          continuationPages[index].classList.toggle("is-visible", hasImage || hasText);
-        });
+      function boundaryAt(text, start, capacity) {
+        const target = Math.min(start + capacity, text.length);
+        if (target === text.length) return target;
+        const before = text.lastIndexOf(" ", target);
+        const after = text.indexOf(" ", target);
+        return after === -1 || (before !== -1 && target - before < after - target) ? before : after;
+      }
+      function htmlSlice(html, start, end) {
+        const source = document.createElement("div");
+        source.innerHTML = html;
+        const textNodes = [];
+        const walker = document.createTreeWalker(source, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) textNodes.push(walker.currentNode);
+        const locate = offset => {
+          let count = 0;
+          for (const node of textNodes) { const next = count + node.textContent.length; if (offset <= next) return { node, offset: Math.max(0, offset - count) }; count = next; }
+          return { node: source, offset: source.childNodes.length };
+        };
+        if (!textNodes.length || start >= end) return "";
+        const range = document.createRange();
+        const startPoint = locate(start);
+        const endPoint = locate(end);
+        range.setStart(startPoint.node, startPoint.offset);
+        range.setEnd(endPoint.node, endPoint.offset);
+        const result = document.createElement("div");
+        result.append(range.cloneContents());
+        return result.innerHTML;
+      }
+      function distributeBody() {
+        const source = document.createElement("div");
+        source.innerHTML = document.getElementById("bodyText").innerHTML;
+        const text = source.textContent;
+        const limits = [imageSources[0] ? 650 : 1100, imageSources[1] ? 800 : 1200];
+        const firstEnd = boundaryAt(text, 0, limits[0]);
+        const secondEnd = boundaryAt(text, firstEnd, limits[1]);
+        const sections = [htmlSlice(source.innerHTML, 0, firstEnd), htmlSlice(source.innerHTML, firstEnd, secondEnd), htmlSlice(source.innerHTML, secondEnd, text.length)];
+        setRichText(document.getElementById("previewBody"), sections[0]);
+        setRichText(document.getElementById("previewPage2Text"), sections[1]);
+        setRichText(document.getElementById("previewPage3Text"), sections[2]);
+        continuationPages[1].classList.toggle("is-visible", Boolean(sections[1].replace(/<[^>]*>/g, "").trim()) || Boolean(imageSources[1]));
+        continuationPages[2].classList.toggle("is-visible", Boolean(sections[2].replace(/<[^>]*>/g, "").trim()) || Boolean(imageSources[2]));
+        const quote = document.getElementById("previewQuote");
+        const quoteTarget = continuationPages[2].classList.contains("is-visible") ? continuationPages[2].querySelector(".article") : continuationPages[1].classList.contains("is-visible") ? continuationPages[1].querySelector(".article") : document.getElementById("page").querySelector(".article");
+        quoteTarget.append(quote);
       }
       function update() {
         Object.entries(names).forEach(([field, target]) => setText(document.getElementById(target), fields[field].value));
-        editorIds.forEach(id => setRichText(document.getElementById(editorTargets[id]), document.getElementById(id).innerHTML));
+        editorIds.filter(id => editorTargets[id]).forEach(id => setRichText(document.getElementById(editorTargets[id]), document.getElementById(id).innerHTML));
+        distributeBody();
         const author = fields.author.value ? `PAR ${fields.author.value}` : "";
         const date = formatDate(fields.date.value);
         setText(document.getElementById("previewMeta"), [author, date].filter(Boolean).join("   |   "));
@@ -214,7 +258,6 @@
         document.querySelectorAll(".page").forEach(page => page.style.setProperty("--background", `url("assets/backgrounds/${selected}.png")`));
         localStorage.setItem("newsletter-draft", JSON.stringify(Object.fromEntries(ids.map(id => [id, fields[id].value]).concat(editorIds.map(id => [id, document.getElementById(id).innerHTML]), [["background", selected]]))));
         fitTitle();
-        updateContinuationVisibility();
       }
       function restore() {
         const saved = JSON.parse(localStorage.getItem("newsletter-draft") || "null");
@@ -246,16 +289,54 @@
         color.addEventListener("input", () => { focusEditor(editor); document.execCommand("foreColor", false, color.value); storedColors[editor.id] = color.value; localStorage.setItem("newsletter-editor-colors", JSON.stringify(storedColors)); update(); });
       });
       const readFile = file => new Promise(resolve => { const reader = new FileReader(); reader.addEventListener("load", () => resolve(reader.result)); reader.readAsDataURL(file); });
+      let imageSources = [null, null, null];
+      function applyImageSources() {
+        imageSources.forEach((source, index) => {
+          if (source) { previewImages[index].src = source; previewImages[index].classList.add("is-visible"); articleContents[index].classList.add("has-image"); }
+          else { previewImages[index].removeAttribute("src"); previewImages[index].classList.remove("is-visible"); articleContents[index].classList.remove("has-image"); }
+        });
+      }
       async function updateImages() {
         const files = imageFields.map(field => field.files[0] || null);
         for (let index = 0; index < files.length; index += 1) {
-          if (files[index]) { previewImages[index].src = await readFile(files[index]); previewImages[index].classList.add("is-visible"); articleContents[index].classList.add("has-image"); }
-          else { previewImages[index].removeAttribute("src"); previewImages[index].classList.remove("is-visible"); articleContents[index].classList.remove("has-image"); }
+          if (files[index]) imageSources[index] = await readFile(files[index]);
         }
-        updateContinuationVisibility();
+        applyImageSources();
+        update();
       }
       imageFields.forEach(field => field.addEventListener("change", updateImages));
       document.querySelectorAll('input[name="background"]').forEach(input => input.addEventListener("change", update));
+      document.getElementById("expandBody").addEventListener("click", () => { document.body.classList.add("body-editor-open"); focusEditor(document.getElementById("bodyText")); });
+      document.getElementById("collapseBody").addEventListener("click", () => document.body.classList.remove("body-editor-open"));
+      document.addEventListener("keydown", event => { if (event.key === "Escape") document.body.classList.remove("body-editor-open"); });
+      function documentData() {
+        return { version: 1, fields: Object.fromEntries(ids.map(id => [id, fields[id].value])), editors: Object.fromEntries(editorIds.map(id => [id, document.getElementById(id).innerHTML])), background: document.querySelector('input[name="background"]:checked').value, images: imageSources };
+      }
+      document.getElementById("exportJson").addEventListener("click", () => {
+        const blob = new Blob([JSON.stringify(documentData(), null, 2)], { type: "application/json" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "newsletter.json";
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+      });
+      document.getElementById("importJson").addEventListener("click", () => document.getElementById("importFile").click());
+      document.getElementById("importFile").addEventListener("change", async event => {
+        const file = event.target.files[0];
+        if (!file) return;
+        try {
+          const data = JSON.parse(await file.text());
+          if (!data || typeof data !== "object") throw new Error("invalid");
+          ids.forEach(id => { if (data.fields && data.fields[id] !== undefined) fields[id].value = data.fields[id]; });
+          editorIds.forEach(id => { if (data.editors && data.editors[id] !== undefined) document.getElementById(id).innerHTML = data.editors[id]; });
+          const background = document.querySelector(`input[value="${data.background}"]`);
+          if (background) background.checked = true;
+          imageSources = Array.isArray(data.images) ? [0, 1, 2].map(index => data.images[index] || null) : [null, null, null];
+          applyImageSources();
+          update();
+        } catch { alert("Ce fichier ne correspond pas à une sauvegarde de newsletter valide."); }
+        event.target.value = "";
+      });
       document.getElementById("print").addEventListener("click", () => window.print());
       document.getElementById("reset").addEventListener("click", () => { localStorage.removeItem("newsletter-draft"); location.reload(); });
       window.addEventListener("resize", fitTitle);
