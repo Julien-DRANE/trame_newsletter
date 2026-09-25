@@ -22,6 +22,8 @@
       .intro { margin: 8px 0 26px; color: #5c6e84; font-size: 13px; line-height: 1.45; }
       .section-title { margin: 26px 0 11px; color: var(--ink); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
       label { display: block; margin: 0 0 14px; color: #40546e; font-size: 12px; font-weight: 700; }
+      .editor-field { display: block; margin: 0 0 14px; color: #40546e; font-size: 12px; font-weight: 700; }
+      .field-label { display: block; }
       input, textarea, select { display: block; width: 100%; margin-top: 6px; padding: 10px 11px; border: 1px solid #cbd8e6; border-radius: 7px; background: #fff; color: #1f3653; font: 400 14px/1.4 Marianne, Arial, sans-serif; }
       input:focus, textarea:focus, select:focus { outline: 3px solid #c5dcf8; border-color: #6594cd; }
       textarea { min-height: 116px; resize: vertical; }
@@ -90,21 +92,21 @@
 
         <p class="section-title">Contenu</p>
         <label>Titre du texte de présentation<input id="sectionTitle" value="Texte de présentation" /></label>
-        <label>Texte de présentation
+        <div class="editor-field"><span class="field-label">Texte de présentation</span>
           <div class="rich-toolbar" data-editor="introText"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
           <div class="rich-editor" id="introText" contenteditable="true">Présentez brièvement le sujet et l’idée principale de votre article.</div>
-        </label>
+        </div>
         <label>Photo — page 1<input id="pageImage1" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Insérée à droite du corps de l’article.</span></label>
         <label>Photo — page 2<input id="pageImage2" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Commence une nouvelle page dans le PDF.</span></label>
         <label>Photo — page 3<input id="pageImage3" type="file" accept="image/png,image/jpeg,image/webp" /><span class="field-note">Commence une nouvelle page dans le PDF.</span></label>
-        <label>Corps de l’article
+        <div class="editor-field"><span class="field-label">Corps de l’article</span>
           <div class="rich-toolbar" data-editor="bodyText"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#344d6d" aria-label="Couleur du texte" /></div>
           <div class="rich-editor" id="bodyText" contenteditable="true">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</div>
-        </label>
-        <label>Conclusion, ressource ou citation
+        </div>
+        <div class="editor-field"><span class="field-label">Conclusion, ressource ou citation</span>
           <div class="rich-toolbar" data-editor="quote"><button type="button" data-command="bold" aria-label="Gras"><strong>G</strong></button><button type="button" data-command="underline" aria-label="Souligné"><u>S</u></button><button type="button" data-command="insertUnorderedList" aria-label="Puces">• Liste</button><select data-size aria-label="Taille du texte"><option value="3">Taille</option><option value="2">Petit</option><option value="3">Normal</option><option value="4">Grand</option><option value="5">Très grand</option></select><input type="color" value="#3f6492" aria-label="Couleur du texte" /></div>
           <div class="rich-editor" id="quote" contenteditable="true">Une phrase importante ou une citation peut trouver sa place ici.</div>
-        </label>
+        </div>
 
         <p class="section-title">Fond graphique</p>
         <div class="backgrounds" id="backgrounds">
