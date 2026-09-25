@@ -26,6 +26,7 @@
       input:focus, textarea:focus, select:focus { outline: 3px solid #c5dcf8; border-color: #6594cd; }
       textarea { min-height: 116px; resize: vertical; }
       input[type="file"] { padding: 8px; font-size: 12px; }
+      .field-note { display: block; margin-top: 5px; color: #6c7f96; font-size: 11px; font-weight: 400; line-height: 1.35; }
       .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .backgrounds { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
       .background-choice { position: relative; display: block; margin: 0; cursor: pointer; }
@@ -54,10 +55,14 @@
       .article-content p { margin-bottom: 0; }
       .article-image { display: none; float: right; width: 45%; height: clamp(195px, 25vw, 290px); margin: 0 0 16px 25px; object-fit: cover; }
       .article-image.is-visible { display: block; }
+      .additional-images { clear: both; }
+      .additional-image { margin: 52px 0 0; break-before: page; page-break-before: always; }
+      .additional-image img { display: block; width: 100%; max-height: 650px; object-fit: contain; }
+      .additional-image figcaption { margin-top: 9px; color: #5f7fa7; font-size: 13px; font-weight: 500; text-align: center; }
       .quote { margin: 40px 0 0; padding: 17px 0 17px 23px; border-left: 5px solid #7ca4d4; color: #3f6492; font-size: clamp(17px, 2.2vw, 25px); font-weight: 500; line-height: 1.35; white-space: pre-wrap; }
       .empty { color: #9aabc0 !important; font-style: italic; }
       @media (max-width: 840px) { .app { grid-template-columns: 1fr; } .editor { border-right: 0; border-bottom: 1px solid #d8e1ec; } .preview-area { padding: 25px 13px; } .page { padding: 72px 40px 105px; } .logos { top: 21px; right: 31px; left: 31px; } .logo-academique { width: 88px; height: 36px; } .logo-drane { width: 84px; height: 34px; } .article-image { height: 220px; } .actions { position: static; margin-bottom: 0; padding-bottom: 0; } }
-      @media print { @page { size: A4; margin: 0; } body { background: #fff; } .editor { display: none; } .app { display: block; } .preview-area { display: block; padding: 0; } .page { width: 210mm; min-height: 297mm; padding: 29mm 18mm 34mm; box-shadow: none; background-size: 100% 100%; print-color-adjust: exact; -webkit-print-color-adjust: exact; } .logos { top: 8mm; right: 15mm; left: 15mm; } .logo-academique { width: 31mm; height: 13mm; } .logo-drane { width: 30mm; height: 12mm; } }
+      @media print { @page { size: A4; margin: 0; } body { background: #fff; } .editor { display: none; } .app { display: block; } .preview-area { display: block; padding: 0; } .page { width: 210mm; min-height: 297mm; padding: 29mm 18mm 34mm; box-shadow: none; background-size: 100% 100%; background-repeat: no-repeat; box-decoration-break: clone; -webkit-box-decoration-break: clone; print-color-adjust: exact; -webkit-print-color-adjust: exact; } .logos { top: 8mm; right: 15mm; left: 15mm; } .logo-academique { width: 31mm; height: 13mm; } .logo-drane { width: 30mm; height: 12mm; } .additional-image { margin-top: 0; } }
     </style>
   </head>
   <body>
@@ -77,7 +82,7 @@
 
         <p class="section-title">Contenu</p>
         <label>Texte de présentation<textarea id="introText">Présentez brièvement le sujet et l’idée principale de votre article.</textarea></label>
-        <label>Image de l’article<input id="articleImage" type="file" accept="image/png,image/jpeg,image/webp" /></label>
+        <label>Photos de l’article<input id="articleImage" type="file" accept="image/png,image/jpeg,image/webp" multiple /><span class="field-note">La première image est intégrée au texte. Chaque image suivante commence sur une nouvelle page du PDF.</span></label>
         <label>Corps de l’article<textarea id="bodyText">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</textarea></label>
         <label>Conclusion, ressource ou citation <textarea id="quote">Une phrase importante ou une citation peut trouver sa place ici.</textarea></label>
 
@@ -110,6 +115,7 @@
               <p id="previewBody"></p>
             </div>
             <blockquote class="quote" id="previewQuote"></blockquote>
+            <div class="additional-images" id="additionalImages"></div>
           </div>
         </article>
       </section>
@@ -121,6 +127,7 @@
       const imageField = document.getElementById("articleImage");
       const previewImage = document.getElementById("previewImage");
       const articleContent = document.getElementById("articleContent");
+      const additionalImages = document.getElementById("additionalImages");
       const formatDate = value => value ? new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(value + "T12:00:00")).replace(".", "") : "";
       function setText(target, value) { target.textContent = value || ""; target.classList.toggle("empty", !value); }
       function fitTitle() {
@@ -145,12 +152,26 @@
         update();
       }
       ids.forEach(id => fields[id].addEventListener("input", update));
-      imageField.addEventListener("change", () => {
-        const file = imageField.files[0];
-        if (!file) { previewImage.removeAttribute("src"); previewImage.classList.remove("is-visible"); articleContent.classList.remove("has-image"); return; }
-        const reader = new FileReader();
-        reader.addEventListener("load", () => { previewImage.src = reader.result; previewImage.classList.add("is-visible"); articleContent.classList.add("has-image"); });
-        reader.readAsDataURL(file);
+      imageField.addEventListener("change", async () => {
+        const files = [...imageField.files];
+        additionalImages.replaceChildren();
+        if (!files.length) { previewImage.removeAttribute("src"); previewImage.classList.remove("is-visible"); articleContent.classList.remove("has-image"); return; }
+        const readFile = file => new Promise(resolve => { const reader = new FileReader(); reader.addEventListener("load", () => resolve(reader.result)); reader.readAsDataURL(file); });
+        const imageUrls = await Promise.all(files.map(readFile));
+        previewImage.src = imageUrls[0];
+        previewImage.classList.add("is-visible");
+        articleContent.classList.add("has-image");
+        imageUrls.slice(1).forEach((url, index) => {
+          const figure = document.createElement("figure");
+          figure.className = "additional-image";
+          const image = document.createElement("img");
+          image.src = url;
+          image.alt = `Illustration ${index + 2} de l’article`;
+          const caption = document.createElement("figcaption");
+          caption.textContent = `Illustration ${index + 2}`;
+          figure.append(image, caption);
+          additionalImages.append(figure);
+        });
       });
       document.querySelectorAll('input[name="background"]').forEach(input => input.addEventListener("change", update));
       document.getElementById("print").addEventListener("click", () => window.print());
