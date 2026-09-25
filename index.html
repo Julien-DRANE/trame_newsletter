@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>Générateur de newsletter</title>
+    <style>
+      @font-face { font-family: Marianne; src: url("assets/fonts/Marianne-Regular.otf") format("opentype"); font-weight: 400; }
+      @font-face { font-family: Marianne; src: url("assets/fonts/Marianne-Medium.otf") format("opentype"); font-weight: 500; }
+      @font-face { font-family: Marianne; src: url("assets/fonts/Marianne-Bold.otf") format("opentype"); font-weight: 700; }
+      @font-face { font-family: Marianne; src: url("assets/fonts/Marianne-ExtraBold.otf") format("opentype"); font-weight: 800; }
+
+      :root { --ink: #263d5c; --blue: #4879bc; --pale: #edf4fb; --line: #c8d9ed; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #edf2f7; color: #172b45; font-family: Marianne, Arial, sans-serif; }
+      .app { min-height: 100vh; display: grid; grid-template-columns: minmax(300px, 390px) 1fr; }
+      .editor { padding: 32px 26px; background: #fff; border-right: 1px solid #d8e1ec; overflow-y: auto; }
+      .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 29px; color: var(--ink); }
+      .brand-mark { width: 31px; height: 31px; border: 7px solid var(--blue); border-radius: 50%; border-left-color: #c8dcf3; }
+      h1 { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.02em; }
+      .intro { margin: 8px 0 26px; color: #5c6e84; font-size: 13px; line-height: 1.45; }
+      .section-title { margin: 26px 0 11px; color: var(--ink); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+      label { display: block; margin: 0 0 14px; color: #40546e; font-size: 12px; font-weight: 700; }
+      input, textarea, select { display: block; width: 100%; margin-top: 6px; padding: 10px 11px; border: 1px solid #cbd8e6; border-radius: 7px; background: #fff; color: #1f3653; font: 400 14px/1.4 Marianne, Arial, sans-serif; }
+      input:focus, textarea:focus, select:focus { outline: 3px solid #c5dcf8; border-color: #6594cd; }
+      textarea { min-height: 116px; resize: vertical; }
+      .split { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .backgrounds { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .background-choice { position: relative; display: block; margin: 0; cursor: pointer; }
+      .background-choice input { position: absolute; opacity: 0; pointer-events: none; }
+      .background-choice span { display: block; padding: 7px; border: 2px solid transparent; border-radius: 9px; color: #52667f; font-size: 11px; font-weight: 500; }
+      .background-choice img { display: block; width: 100%; aspect-ratio: 210/297; margin-bottom: 6px; object-fit: cover; border-radius: 4px; box-shadow: 0 2px 7px #263d5c22; }
+      .background-choice input:checked + span { border-color: #477abc; background: #eff6fe; color: #173a69; }
+      .actions { position: sticky; bottom: -32px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 26px -2px -32px; padding: 16px 2px 32px; background: linear-gradient(transparent, #fff 28%); }
+      button { border: 0; border-radius: 7px; padding: 12px 10px; cursor: pointer; font: 700 13px Marianne, Arial, sans-serif; }
+      .primary { background: #315f9b; color: #fff; }
+      .secondary { background: #e8f0f9; color: #234b7b; }
+      .preview-area { display: grid; place-items: start center; padding: 46px 36px; overflow: auto; }
+      .page { --background: url("assets/backgrounds/cercles-equilibre.png"); position: relative; width: min(100%, 760px); min-height: 1075px; padding: 108px 66px 126px; background-color: #fff; background-image: var(--background); background-size: 100% 100%; background-repeat: no-repeat; box-shadow: 0 12px 36px #233d5e2b; color: var(--ink); }
+      .logos { position: absolute; top: 30px; right: 54px; left: 54px; display: flex; align-items: flex-start; justify-content: space-between; pointer-events: none; }
+      .logo-academique { width: 118px; height: 48px; object-fit: contain; object-position: left top; }
+      .logo-drane { width: 112px; height: 43px; object-fit: contain; object-position: right top; }
+      .category { display: inline-block; margin: 0 0 26px; padding-bottom: 10px; border-bottom: 3px solid #b6cde7; color: #597eac; font-size: clamp(10px, 1.45vw, 16px); font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+      .headline { max-width: 90%; margin: 0; color: #233b5d; font-size: clamp(34px, 5.4vw, 64px); font-weight: 800; letter-spacing: -.05em; line-height: .98; overflow-wrap: anywhere; text-transform: uppercase; }
+      .subtitle { max-width: 94%; margin: 24px 0 25px; color: #5879a4; font-size: clamp(19px, 2.6vw, 31px); font-weight: 700; line-height: 1.15; overflow-wrap: anywhere; }
+      .metadata { color: #6a89b0; font-size: clamp(9px, 1.3vw, 15px); font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
+      .article { max-width: 94%; margin-top: clamp(58px, 8vw, 91px); }
+      .article h2 { margin: 0 0 17px; font-size: clamp(20px, 2.6vw, 31px); font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
+      .article p { margin: 0 0 19px; color: #344d6d; font-size: clamp(14px, 1.7vw, 18px); line-height: 1.62; white-space: pre-wrap; overflow-wrap: break-word; }
+      .quote { margin: 40px 0 0; padding: 17px 0 17px 23px; border-left: 5px solid #7ca4d4; color: #3f6492; font-size: clamp(17px, 2.2vw, 25px); font-weight: 500; line-height: 1.35; white-space: pre-wrap; }
+      .empty { color: #9aabc0 !important; font-style: italic; }
+      @media (max-width: 840px) { .app { grid-template-columns: 1fr; } .editor { border-right: 0; border-bottom: 1px solid #d8e1ec; } .preview-area { padding: 25px 13px; } .page { padding: 72px 40px 105px; } .logos { top: 21px; right: 31px; left: 31px; } .logo-academique { width: 88px; height: 36px; } .logo-drane { width: 84px; height: 34px; } .actions { position: static; margin-bottom: 0; padding-bottom: 0; } }
+      @media print { @page { size: A4; margin: 0; } body { background: #fff; } .editor { display: none; } .app { display: block; } .preview-area { display: block; padding: 0; } .page { width: 210mm; min-height: 297mm; padding: 29mm 18mm 34mm; box-shadow: none; background-size: 100% 100%; print-color-adjust: exact; -webkit-print-color-adjust: exact; } .logos { top: 8mm; right: 15mm; left: 15mm; } .logo-academique { width: 31mm; height: 13mm; } .logo-drane { width: 30mm; height: 12mm; } }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <aside class="editor" aria-label="Édition de la newsletter">
+        <div class="brand"><span class="brand-mark" aria-hidden="true"></span><h1>Newsletter</h1></div>
+        <p class="intro">Complétez les champs : la prévisualisation se met à jour instantanément.</p>
+
+        <p class="section-title">Informations</p>
+        <label>Catégorie<input id="category" value="Numérique éducatif" /></label>
+        <label>Titre de l’article<input id="title" value="Un titre qui donne envie de lire" /></label>
+        <label>Sous-titre ou accroche<input id="subtitle" value="Une phrase courte pour présenter l’essentiel" /></label>
+        <div class="split">
+          <label>Auteur<input id="author" value="Prénom Nom" /></label>
+          <label>Date<input id="date" type="date" /></label>
+        </div>
+
+        <p class="section-title">Contenu</p>
+        <label>Texte de présentation<textarea id="introText">Présentez brièvement le sujet et l’idée principale de votre article.</textarea></label>
+        <label>Corps de l’article<textarea id="bodyText">Développez votre contenu avec des paragraphes courts et aérés. Vous pouvez insérer des sauts de ligne pour organiser la lecture.</textarea></label>
+        <label>Conclusion, ressource ou citation <textarea id="quote">Une phrase importante ou une citation peut trouver sa place ici.</textarea></label>
+
+        <p class="section-title">Fond graphique</p>
+        <div class="backgrounds" id="backgrounds">
+          <label class="background-choice"><input type="radio" name="background" value="vagues-doubles" /><span><img src="assets/backgrounds/vagues-doubles.png" alt="Fond aux vagues doubles" />Vagues doubles</span></label>
+          <label class="background-choice"><input type="radio" name="background" value="cercles-equilibre" checked /><span><img src="assets/backgrounds/cercles-equilibre.png" alt="Fond aux cercles en haut" />Cercles</span></label>
+          <label class="background-choice"><input type="radio" name="background" value="vague-simple" /><span><img src="assets/backgrounds/vague-simple.png" alt="Fond à vague simple" />Vague simple</span></label>
+          <label class="background-choice"><input type="radio" name="background" value="cercles-fins" /><span><img src="assets/backgrounds/cercles-fins.png" alt="Fond aux cercles fins" />Cercles fins</span></label>
+          <label class="background-choice"><input type="radio" name="background" value="arc-lateral" /><span><img src="assets/backgrounds/arc-lateral.png" alt="Fond à arc latéral" />Arc latéral</span></label>
+        </div>
+        <div class="actions"><button class="secondary" id="reset" type="button">Réinitialiser</button><button class="primary" id="print" type="button">Imprimer / PDF</button></div>
+      </aside>
+
+      <section class="preview-area" aria-label="Prévisualisation">
+        <article class="page" id="page">
+          <div class="logos" aria-label="Logos institutionnels">
+            <img class="logo-academique" src="assets/logos/logo-academique.png" alt="Région académique La Réunion" />
+            <img class="logo-drane" src="assets/logos/logo-drane.png" alt="DRANE La Réunion" />
+          </div>
+          <div class="category" id="previewCategory"></div>
+          <h1 class="headline" id="previewTitle"></h1>
+          <p class="subtitle" id="previewSubtitle"></p>
+          <div class="metadata" id="previewMeta"></div>
+          <div class="article">
+            <h2>Texte de présentation</h2>
+            <p id="previewIntro"></p>
+            <p id="previewBody"></p>
+            <blockquote class="quote" id="previewQuote"></blockquote>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script>
+      const ids = ["category", "title", "subtitle", "author", "date", "introText", "bodyText", "quote"];
+      const names = { category: "previewCategory", title: "previewTitle", subtitle: "previewSubtitle", introText: "previewIntro", bodyText: "previewBody", quote: "previewQuote" };
+      const fields = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+      const formatDate = value => value ? new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(value + "T12:00:00")).replace(".", "") : "";
+      function setText(target, value) { target.textContent = value || ""; target.classList.toggle("empty", !value); }
+      function fitTitle() {
+        const title = document.getElementById("previewTitle");
+        const length = title.textContent.trim().length;
+        title.style.fontSize = length > 120 ? "clamp(29px, 3.8vw, 46px)" : length > 75 ? "clamp(32px, 4.5vw, 55px)" : "";
+      }
+      function update() {
+        Object.entries(names).forEach(([field, target]) => setText(document.getElementById(target), fields[field].value));
+        const author = fields.author.value ? `PAR ${fields.author.value}` : "";
+        const date = formatDate(fields.date.value);
+        setText(document.getElementById("previewMeta"), [author, date].filter(Boolean).join("   |   "));
+        const selected = document.querySelector('input[name="background"]:checked').value;
+        document.getElementById("page").style.setProperty("--background", `url("assets/backgrounds/${selected}.png")`);
+        localStorage.setItem("newsletter-draft", JSON.stringify(Object.fromEntries(ids.map(id => [id, fields[id].value]).concat([["background", selected]]))));
+        fitTitle();
+      }
+      function restore() {
+        const saved = JSON.parse(localStorage.getItem("newsletter-draft") || "null");
+        if (saved) { ids.forEach(id => { if (saved[id] !== undefined) fields[id].value = saved[id]; }); const bg = document.querySelector(`input[value="${saved.background}"]`); if (bg) bg.checked = true; }
+        if (!fields.date.value) fields.date.value = new Date().toISOString().slice(0, 10);
+        update();
+      }
+      ids.forEach(id => fields[id].addEventListener("input", update));
+      document.querySelectorAll('input[name="background"]').forEach(input => input.addEventListener("change", update));
+      document.getElementById("print").addEventListener("click", () => window.print());
+      document.getElementById("reset").addEventListener("click", () => { localStorage.removeItem("newsletter-draft"); location.reload(); });
+      window.addEventListener("resize", fitTitle);
+      restore();
+    </script>
+  </body>
+</html>
