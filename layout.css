@@ -7,6 +7,7 @@
 .sheet .headline{font-size:42px;line-height:1.08;max-width:100%;letter-spacing:-1.3px}
 .sheet .subtitle{font-size:23px;margin:15px 0;max-width:100%}
 .sheet .metadata{font-size:11px;margin-bottom:27px}
+.remove-photo{width:100%;margin:-2px 0 14px;padding:8px 10px;font-size:12px}
 .flow{font:400 16px/1.48 Marianne,Arial,sans-serif;overflow-wrap:anywhere;display:flow-root}
 .flow p,.flow div{margin:0 0 12px}.flow h2,.flow h3{font-size:23px;line-height:1.25;margin:18px 0 12px}.flow ul,.flow ol{padding-left:25px;margin:0 0 12px}.flow li{margin-bottom:4px}
 .flow .photo{float:right;width:43%;height:240px;object-fit:cover;margin:0 0 16px 22px;shape-outside:inset(0)}
