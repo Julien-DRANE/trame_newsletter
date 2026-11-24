@@ -1,0 +1,122 @@
+{
+  "app.js": {
+    "mtime": 1795505903.1714993,
+    "ast_hash": "2ad3743327b6f8b95d357b3424b24495",
+    "semantic_hash": ""
+  },
+  ".github/workflows/static.yml": {
+    "mtime": 1790341253.0,
+    "ast_hash": "4bbcd37da310febbd93503bd5d458eb7",
+    "semantic_hash": ""
+  },
+  "Newsletter-autonome.html": {
+    "mtime": 1795505903.5247104,
+    "ast_hash": "9137a74b4f5fba9e62cedd112a73fa82",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1795504972.0210512,
+    "ast_hash": "3370c0eb20a56d351843260c4b2f8ece",
+    "semantic_hash": ""
+  },
+  "indexodl.html": {
+    "mtime": 1790341253.0,
+    "ast_hash": "76c3fef5039c6186dd048f2ee4d47632",
+    "semantic_hash": ""
+  },
+  "assets/backgrounds/arc-lateral.png": {
+    "mtime": 1790657577.84121,
+    "ast_hash": "adc6d823b786222c0b268e3d1742e9df",
+    "semantic_hash": ""
+  },
+  "assets/backgrounds/cercles-equilibre.png": {
+    "mtime": 1790657578.2317908,
+    "ast_hash": "083047c688ca8781b5518489704c0e83",
+    "semantic_hash": ""
+  },
+  "assets/backgrounds/cercles-fins.png": {
+    "mtime": 1790657578.6208448,
+    "ast_hash": "ee4fefb4b32e3ad42be63e307fac500b",
+    "semantic_hash": ""
+  },
+  "assets/backgrounds/vague-simple.png": {
+    "mtime": 1790657579.0237334,
+    "ast_hash": "e7e31605fbc3cfcac73eb34d29bfa3af",
+    "semantic_hash": ""
+  },
+  "assets/backgrounds/vagues-doubles.png": {
+    "mtime": 1790657579.4640756,
+    "ast_hash": "9ef0438b8a33ba7c4c8e783e7dcd0812",
+    "semantic_hash": ""
+  },
+  "assets/logos/logo-academique.png": {
+    "mtime": 1790341253.0,
+    "ast_hash": "06d731b6b486a035975d32550b89a098",
+    "semantic_hash": ""
+  },
+  "assets/logos/logo-drane.png": {
+    "mtime": 1790341253.0,
+    "ast_hash": "3640251873c0c58eea2b3410e8420667",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-03-23-560Z.yml": {
+    "mtime": 1795503803.5623872,
+    "ast_hash": "9d7930298c3233f95dab9afb97d2ee7a",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-07-25-993Z.yml": {
+    "mtime": 1795504045.995405,
+    "ast_hash": "9d7930298c3233f95dab9afb97d2ee7a",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-09-04-467Z.yml": {
+    "mtime": 1795504144.467131,
+    "ast_hash": "fe0a9a2fd9a0fa6c28bd70e396f7ad59",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-09-28-289Z.yml": {
+    "mtime": 1795504168.290071,
+    "ast_hash": "5f83e516c7578661c42f8acd7783e49b",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-09-59-067Z.yml": {
+    "mtime": 1795504199.0684848,
+    "ast_hash": "3572ad33a91ad4ff8aab9914eb63b255",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-15-22-369Z.yml": {
+    "mtime": 1795504522.3701813,
+    "ast_hash": "55e18013a1d6cddd0f3e3937012c3984",
+    "semantic_hash": ""
+  },
+  "assets/vendor/docx-9.16.0.js": {
+    "mtime": 1795504921.0072384,
+    "ast_hash": "c192b978d0fe7f4e4f685a5a545558f6",
+    "semantic_hash": ""
+  },
+  "export-docx.js": {
+    "mtime": 1795504971.9060516,
+    "ast_hash": "df8ed62f318596eed8acec10e06c2ca7",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-22-54-927Z.yml": {
+    "mtime": 1795504974.9286008,
+    "ast_hash": "af1ff0515ae80bb67c8b42612f7903e5",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-23-18-888Z.yml": {
+    "mtime": 1795504998.8895545,
+    "ast_hash": "67c3724f0200dda29531b6de8fb79808",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-36-55-055Z.yml": {
+    "mtime": 1795505815.0559328,
+    "ast_hash": "943bd603c216340095e8fc24cf6ba376",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-24T07-37-28-648Z.yml": {
+    "mtime": 1795505848.6488483,
+    "ast_hash": "27848d07af0b8a82b8345e22bc95bf1d",
+    "semantic_hash": ""
+  }
+}

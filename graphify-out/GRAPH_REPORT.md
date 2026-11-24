@@ -1,0 +1,112 @@
+# Graph Report - trame_newsletter-main  (2026-11-24)
+
+## Corpus Check
+- 3 files · ~482,685 words
+- Verdict: corpus is large enough that graph structure adds value.
+
+## Summary
+- 163 nodes · 310 edges · 13 communities (12 shown, 1 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
+- Token cost: 0 input · 0 output
+
+## Community Hubs (Navigation)
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
+
+## God Nodes (most connected - your core abstractions)
+1. `push()` - 25 edges
+2. `constructor()` - 20 edges
+3. `prepForXml()` - 17 edges
+4. `render()` - 11 edges
+5. `add()` - 11 edges
+6. `_objectSpread2()` - 10 edges
+7. `addRelationship()` - 10 edges
+8. `get()` - 9 edges
+9. `addSection()` - 9 edges
+10. `pack()` - 8 edges
+
+## Surprising Connections (you probably didn't know these)
+- `buildWordDocument()` --calls--> `$()`  [INFERRED]
+  export-docx.js → app.js
+- `buildWordDocument()` --calls--> `render()`  [INFERRED]
+  export-docx.js → app.js
+
+## Import Cycles
+- None detected.
+
+## Communities (13 total, 1 thin omitted)
+
+### Community 0 - "Community 0"
+Cohesion: 0.17
+Nodes (18): area, blocks(), clean(), editors, ids, images, linkify(), photoSizes (+10 more)
+
+### Community 2 - "Community 2"
+Cohesion: 0.14
+Nodes (28): add(), addChildElement(), addComments(), addCommentsExtended(), addCommentsIds(), addCustomProperty(), addDefaultRelationships(), addFooter() (+20 more)
+
+### Community 3 - "Community 3"
+Cohesion: 0.19
+Nodes (14): addSectionProperties(), createClick(), createConcreteNumberingInstance(), createDrawingClick(), get(), getCellWidth(), getSectionPropertiesFor(), getTarget() (+6 more)
+
+### Community 4 - "Community 4"
+Cohesion: 0.22
+Nodes (10): addImage(), _defineProperty(), _objectSpread2(), ownKeys(), patch(), takePath(), toPrimitive(), toPropertyKey() (+2 more)
+
+### Community 5 - "Community 5"
+Cohesion: 0.22
+Nodes (9): _asyncToGenerator(), buildCachedContentParagraphChild(), buildCachedContentRun(), pack(), toArrayBuffer(), toBase64String(), toBlob(), toBuffer() (+1 more)
+
+### Community 6 - "Community 6"
+Cohesion: 0.29
+Nodes (7): compile(), format(), getMediaData(), _objectWithoutProperties(), _objectWithoutPropertiesLoose(), toStream(), xmlifyFile()
+
+### Community 7 - "Community 7"
+Cohesion: 0.50
+Nodes (4): _addListener(), checkListener(), _getMaxListeners(), ProcessEmitWarning()
+
+### Community 8 - "Community 8"
+Cohesion: 0.67
+Nodes (3): addCellToColumnIndex(), addCellToIndex(), columnIndexToRootIndex()
+
+### Community 9 - "Community 9"
+Cohesion: 1.00
+Nodes (3): addErrorHandlerIfEventEmitter(), eventTargetAgnosticAddListener(), once()
+
+### Community 10 - "Community 10"
+Cohesion: 0.67
+Nodes (3): arrayClone(), _listeners(), unwrapListeners()
+
+### Community 11 - "Community 11"
+Cohesion: 0.67
+Nodes (3): deflateSync(), strToU8(), zipSync()
+
+## Knowledge Gaps
+- **5 isolated node(s):** `ids`, `editors`, `images`, `photoSizes`, `area`
+  These have ≤1 connection - possible missing edges or undocumented components.
+- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+
+## Suggested Questions
+_Questions this graph is uniquely positioned to answer:_
+
+- **Why does `push()` connect `Community 2` to `Community 11`, `Community 1`, `Community 3`, `Community 7`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `constructor()` connect `Community 2` to `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 6`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `prepForXml()` connect `Community 3` to `Community 1`, `Community 2`, `Community 4`, `Community 6`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **What connects `ids`, `editors`, `images` to the rest of the system?**
+  _5 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 1` be split into smaller, more focused modules?**
+  _Cohesion score 0.03571428571428571 - nodes in this community are weakly interconnected._
+- **Should `Community 2` be split into smaller, more focused modules?**
+  _Cohesion score 0.1402116402116402 - nodes in this community are weakly interconnected._

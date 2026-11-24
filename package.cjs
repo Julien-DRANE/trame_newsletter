@@ -3,6 +3,7 @@ const root=__dirname;
 let html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 html=html.replace('<link rel="stylesheet" href="layout.css">','<style>'+fs.readFileSync(path.join(root,'layout.css'),'utf8')+'</style>');
 html=html.replace('<script src="app.js"></script>','<script>'+fs.readFileSync(path.join(root,'app.js'),'utf8')+'</script>');
+for(const file of ['assets/vendor/docx-9.16.0.js','export-docx.js'])html=html.replace('<script src="'+file+'"></script>',()=>'<script>'+fs.readFileSync(path.join(root,file),'utf8').replace(/<\/script/gi,'<\\/script')+'</script>');
 const backgrounds={};
 for(const name of fs.readdirSync(path.join(root,'assets/backgrounds')))backgrounds[name.replace('.png','')]='data:image/png;base64,'+fs.readFileSync(path.join(root,'assets/backgrounds',name)).toString('base64');
 html=html.replace('const $=id=>', 'const embeddedBackgrounds='+JSON.stringify(backgrounds)+';\nconst $=id=>');

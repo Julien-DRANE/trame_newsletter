@@ -10,9 +10,26 @@
 .remove-photo{width:100%;margin:-2px 0 14px;padding:8px 10px;font-size:12px}
 .flow{font:400 16px/1.48 Marianne,Arial,sans-serif;overflow-wrap:anywhere;display:flow-root}
 .flow p,.flow div{margin:0 0 12px}.flow h2,.flow h3{font-size:23px;line-height:1.25;margin:18px 0 12px}.flow ul,.flow ol{padding-left:25px;margin:0 0 12px}.flow li{margin-bottom:4px}
-.flow .photo{float:right;width:43%;height:240px;object-fit:cover;margin:0 0 16px 22px;shape-outside:inset(0)}
-.flow .photo.left{float:left;margin:0 22px 16px 0}
+.flow .photo{float:right;clear:both;width:auto;max-width:40%;height:auto;max-height:220px;margin:2px 0 8px 24px;shape-outside:inset(0 -24px -8px -24px) border-box;shape-margin:0;shape-image-threshold:0.1}
+.flow .photo.left{float:left;margin:2px 24px 8px 0}
 .flow .quote{clear:both;font-size:19px;line-height:1.4;margin:22px 0 0;padding:12px 0 12px 18px}
 .page-number{position:absolute;bottom:24px;right:62px;font-size:11px;color:#56769a}
 .sheet .flow:after{content:'';display:block;clear:both}
 @media print{@page{size:A4;margin:0}html,body{margin:0;padding:0}.editor{display:none!important}.app,.preview-area{display:block!important;margin:0;padding:0;overflow:visible}.sheet{width:794px;height:1122px;margin:0;box-shadow:none;break-after:page;break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact}.sheet:last-child{break-after:auto}}
+
+/* Justification des blocs de texte, dans l’éditeur et sur les pages imprimées. */
+.rich-editor,.rich-preview,.article p,.flow,.quote{text-align:justify;text-align-last:start}
+.flow h1,.flow h2,.flow h3,.flow h4,.flow h5,.flow h6{text-align:start}
+
+.photo-list{display:grid;gap:8px;margin-bottom:14px}.photo-list>div{display:flex;align-items:center;gap:10px}.photo-list img{width:64px;height:48px;object-fit:cover;border-radius:4px}.photo-list button{flex:1;font-size:12px}
+
+.flow a,.rich-editor a{color:#135ca8;text-decoration:underline;overflow-wrap:anywhere}
+
+.flow .conclusion-photos{clear:both;display:grid;gap:16px;margin:20px 0 0}
+.conclusion-photos img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain}
+
+/* Ombre légère sous les photos, sans modifier leur encombrement. */
+.flow .photo,.conclusion-photos img{box-shadow:0 3px 8px rgba(25,42,62,.16)}
+
+.print-photo{display:none}
+@media print{.flow .photo{visibility:hidden}.sheet .print-photo{display:block;position:absolute;max-width:none;max-height:none;margin:0;box-shadow:0 3px 8px rgba(25,42,62,.16)}}
