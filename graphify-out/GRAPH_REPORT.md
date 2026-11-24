@@ -1,11 +1,11 @@
 # Graph Report - trame_newsletter-main  (2026-11-24)
 
 ## Corpus Check
-- 3 files · ~482,685 words
+- 3 files · ~485,418 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 163 nodes · 310 edges · 13 communities (12 shown, 1 thin omitted)
+- 167 nodes · 318 edges · 12 communities (11 shown, 1 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -15,7 +15,6 @@
 - [[_COMMUNITY_Community 3|Community 3]]
 - [[_COMMUNITY_Community 4|Community 4]]
 - [[_COMMUNITY_Community 5|Community 5]]
-- [[_COMMUNITY_Community 6|Community 6]]
 - [[_COMMUNITY_Community 7|Community 7]]
 - [[_COMMUNITY_Community 8|Community 8]]
 - [[_COMMUNITY_Community 9|Community 9]]
@@ -27,7 +26,7 @@
 1. `push()` - 25 edges
 2. `constructor()` - 20 edges
 3. `prepForXml()` - 17 edges
-4. `render()` - 11 edges
+4. `render()` - 12 edges
 5. `add()` - 11 edges
 6. `_objectSpread2()` - 10 edges
 7. `addRelationship()` - 10 edges
@@ -44,11 +43,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (13 total, 1 thin omitted)
+## Communities (12 total, 1 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.17
-Nodes (18): area, blocks(), clean(), editors, ids, images, linkify(), photoSizes (+10 more)
+Cohesion: 0.15
+Nodes (22): area, backgroundChoices, blocks(), clean(), editors, ids, images, linkify() (+14 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.14
@@ -63,12 +62,8 @@ Cohesion: 0.22
 Nodes (10): addImage(), _defineProperty(), _objectSpread2(), ownKeys(), patch(), takePath(), toPrimitive(), toPropertyKey() (+2 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.22
-Nodes (9): _asyncToGenerator(), buildCachedContentParagraphChild(), buildCachedContentRun(), pack(), toArrayBuffer(), toBase64String(), toBlob(), toBuffer() (+1 more)
-
-### Community 6 - "Community 6"
-Cohesion: 0.29
-Nodes (7): compile(), format(), getMediaData(), _objectWithoutProperties(), _objectWithoutPropertiesLoose(), toStream(), xmlifyFile()
+Cohesion: 0.12
+Nodes (16): _asyncToGenerator(), buildCachedContentParagraphChild(), buildCachedContentRun(), compile(), format(), getMediaData(), _objectWithoutProperties(), _objectWithoutPropertiesLoose() (+8 more)
 
 ### Community 7 - "Community 7"
 Cohesion: 0.50
@@ -91,7 +86,7 @@ Cohesion: 0.67
 Nodes (3): deflateSync(), strToU8(), zipSync()
 
 ## Knowledge Gaps
-- **5 isolated node(s):** `ids`, `editors`, `images`, `photoSizes`, `area`
+- **7 isolated node(s):** `ids`, `editors`, `images`, `pageBackgrounds`, `backgroundChoices` (+2 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -99,13 +94,15 @@ Nodes (3): deflateSync(), strToU8(), zipSync()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `push()` connect `Community 2` to `Community 11`, `Community 1`, `Community 3`, `Community 7`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
-- **Why does `constructor()` connect `Community 2` to `Community 1`, `Community 3`, `Community 4`, `Community 5`, `Community 6`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **Why does `constructor()` connect `Community 2` to `Community 1`, `Community 3`, `Community 4`, `Community 5`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `prepForXml()` connect `Community 3` to `Community 1`, `Community 2`, `Community 4`, `Community 6`?**
+- **Why does `prepForXml()` connect `Community 3` to `Community 1`, `Community 2`, `Community 4`, `Community 5`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `ids`, `editors`, `images` to the rest of the system?**
-  _5 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _7 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 0` be split into smaller, more focused modules?**
+  _Cohesion score 0.14666666666666667 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.03571428571428571 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
