@@ -8,7 +8,7 @@
 .sheet .subtitle{font-size:23px;margin:15px 0;max-width:100%}
 .sheet .metadata{font-size:11px;margin-bottom:27px}
 .remove-photo{width:100%;margin:-2px 0 14px;padding:8px 10px;font-size:12px}
-.flow{font:400 16px/1.48 Marianne,Arial,sans-serif;overflow-wrap:anywhere;display:flow-root}
+.flow{font:400 16px/1.48 Marianne,Arial,sans-serif;overflow-wrap:normal;display:flow-root}
 .flow p,.flow div{margin:0 0 12px}.flow h2,.flow h3{font-size:23px;line-height:1.25;margin:18px 0 12px}.flow ul,.flow ol{padding-left:25px;margin:0 0 12px}.flow li{margin-bottom:4px}
 .flow .photo{float:right;clear:both;width:auto;max-width:40%;height:auto;max-height:220px;margin:2px 0 8px 24px;shape-outside:inset(0 -24px -8px -24px) border-box;shape-margin:0;shape-image-threshold:0.1}
 .flow .photo.left{float:left;margin:2px 24px 8px 0}
@@ -23,7 +23,7 @@
 
 .photo-list{display:grid;gap:8px;margin-bottom:14px}.photo-list>div{display:flex;align-items:center;gap:10px}.photo-list img{width:64px;height:48px;object-fit:cover;border-radius:4px}.photo-list button{flex:1;font-size:12px}
 
-.flow a,.rich-editor a{color:#135ca8;text-decoration:underline;overflow-wrap:anywhere}
+.flow a,.rich-editor a{color:#135ca8;text-decoration:underline;overflow-wrap:normal}
 
 .flow .conclusion-photos{clear:both;display:grid;gap:16px;margin:20px 0 0}
 .conclusion-photos img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain}
@@ -33,3 +33,22 @@
 
 .print-photo{display:none}
 @media print{.flow .photo{visibility:hidden}.sheet .print-photo{display:block;position:absolute;max-width:none;max-height:none;margin:0;box-shadow:0 3px 8px rgba(25,42,62,.16)}}
+
+/* Encart éditorial : hauteur naturelle et habillage du texte. */
+#insetText{width:100%;box-sizing:border-box;resize:vertical;font:inherit;padding:10px;border:1px solid #c7d2df;border-radius:6px;color:#263d5c}
+.flow .article-inset{float:right;clear:both;box-sizing:border-box;margin:2px 0 14px 24px;padding:14px 16px;border:1px solid #7892ae;border-top:3px solid #344d6d;background:#f2f5f9;font-size:14px;line-height:1.45;text-align:left;break-inside:avoid}
+.flow .article-inset.left{float:left;margin:2px 24px 14px 0}
+.flow .article-inset h3{font-size:16px;line-height:1.25;margin:0 0 9px;color:#263d5c}
+.flow .article-inset p{margin:0;white-space:pre-wrap;text-align:left}
+
+.rich-editor .editor-page-break{display:block;clear:both;margin:16px 0;padding:8px 10px;border:1px dashed #7892ae;border-radius:4px;background:#f2f5f9;color:#344d6d;font:12px/1.4 Marianne,Arial,sans-serif;text-align:center;cursor:pointer;user-select:none}
+.rich-editor .editor-page-break:hover,.rich-editor .editor-page-break:focus{border-color:#135ca8;background:#e7eef7;outline:2px solid #135ca8;outline-offset:2px}
+
+.photo-list .photo-controls{display:grid;flex:1;min-width:0;gap:6px}
+.photo-list .photo-controls label{display:flex;align-items:center;gap:10px;margin:0;font-size:12px}
+.photo-list .photo-controls select{flex:1;min-width:0;margin:0;padding:6px}
+.photo-list .photo-controls button{width:100%;padding:7px 10px}
+.conclusion-photos img{justify-self:center}
+
+/* Les mots passent entiers à la ligne, y compris dans les zones d’habillage. */
+.sheet,.sheet *,.rich-editor,.rich-editor *,.rich-preview,.rich-preview *{overflow-wrap:normal;word-break:normal;hyphens:none;-webkit-hyphens:none}

@@ -54,10 +54,40 @@
       "norm_label": "images"
     },
     {
-      "label": "pageBackgrounds",
+      "label": "photoSettings",
+      "file_type": "code",
+      "source_file": "app.js",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "app_photosettings",
+      "community": 0,
+      "norm_label": "photosettings"
+    },
+    {
+      "label": "photoPresets",
+      "file_type": "code",
+      "source_file": "app.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_photopresets",
+      "community": 0,
+      "norm_label": "photopresets"
+    },
+    {
+      "label": "photoPreset()",
       "file_type": "code",
       "source_file": "app.js",
       "source_location": "L7",
+      "_origin": "ast",
+      "id": "app_photopreset",
+      "community": 0,
+      "norm_label": "photopreset()"
+    },
+    {
+      "label": "pageBackgrounds",
+      "file_type": "code",
+      "source_file": "app.js",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "app_pagebackgrounds",
       "community": 0,
@@ -67,7 +97,7 @@
       "label": "backgroundChoices",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L8",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "app_backgroundchoices",
       "community": 0,
@@ -77,7 +107,7 @@
       "label": "syncBackgroundChoices()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "app_syncbackgroundchoices",
       "community": 0,
@@ -87,7 +117,7 @@
       "label": "updateBackgroundControls()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L15",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "app_updatebackgroundcontrols",
       "community": 0,
@@ -97,7 +127,7 @@
       "label": "photoSizes",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L23",
+      "source_location": "L25",
       "_origin": "ast",
       "id": "app_photosizes",
       "community": 0,
@@ -107,7 +137,7 @@
       "label": "area",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L24",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "app_area",
       "community": 0,
@@ -117,7 +147,7 @@
       "label": "updatePhotoControls()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L26",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "app_updatephotocontrols",
       "community": 0,
@@ -127,7 +157,7 @@
       "label": "webLink()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L40",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "app_weblink",
       "community": 0,
@@ -137,17 +167,27 @@
       "label": "linkify()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L44",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "app_linkify",
       "community": 0,
       "norm_label": "linkify()"
     },
     {
+      "label": "pageBreakMarker()",
+      "file_type": "code",
+      "source_file": "app.js",
+      "source_location": "L54",
+      "_origin": "ast",
+      "id": "app_pagebreakmarker",
+      "community": 0,
+      "norm_label": "pagebreakmarker()"
+    },
+    {
       "label": "clean()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L52",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "app_clean",
       "community": 0,
@@ -157,7 +197,7 @@
       "label": "state()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L53",
+      "source_location": "L58",
       "_origin": "ast",
       "id": "app_state",
       "community": 0,
@@ -167,7 +207,7 @@
       "label": "save()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L54",
+      "source_location": "L59",
       "_origin": "ast",
       "id": "app_save",
       "community": 0,
@@ -177,7 +217,7 @@
       "label": "blocks()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L55",
+      "source_location": "L60",
       "_origin": "ast",
       "id": "app_blocks",
       "community": 0,
@@ -187,7 +227,7 @@
       "label": "slice()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L56",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "app_slice",
       "community": 0,
@@ -197,7 +237,7 @@
       "label": "render()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L57",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "app_render",
       "community": 0,
@@ -207,17 +247,27 @@
       "label": "schedule()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L102",
+      "source_location": "L127",
       "_origin": "ast",
       "id": "app_schedule",
       "community": 0,
       "norm_label": "schedule()"
     },
     {
+      "label": "removePageBreak()",
+      "file_type": "code",
+      "source_file": "app.js",
+      "source_location": "L148",
+      "_origin": "ast",
+      "id": "app_removepagebreak",
+      "community": 0,
+      "norm_label": "removepagebreak()"
+    },
+    {
       "label": "restore()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L109",
+      "source_location": "L152",
       "_origin": "ast",
       "id": "app_restore",
       "community": 0,
@@ -227,7 +277,7 @@
       "label": "preparePrint()",
       "file_type": "code",
       "source_file": "app.js",
-      "source_location": "L114",
+      "source_location": "L158",
       "_origin": "ast",
       "id": "app_prepareprint",
       "community": 0,
@@ -960,7 +1010,7 @@
       "source_location": "L20597",
       "_origin": "ast",
       "id": "vendor_docx_9_16_0_gettarget",
-      "community": 3,
+      "community": 2,
       "norm_label": "gettarget()"
     },
     {
@@ -1691,9 +1741,9 @@
       "source_file": "app.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_backgroundchoices",
-      "confidence_score": 1.0
+      "target": "app_backgroundchoices"
     },
     {
       "relation": "contains",
@@ -1761,9 +1811,49 @@
       "source_file": "app.js",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_pagebackgrounds",
-      "confidence_score": 1.0
+      "target": "app_pagebackgrounds"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app",
+      "target": "app_pagebreakmarker"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app",
+      "target": "app_photopreset"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app",
+      "target": "app_photopresets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app",
+      "target": "app_photosettings"
     },
     {
       "relation": "contains",
@@ -1784,6 +1874,16 @@
       "confidence_score": 1.0,
       "source": "app",
       "target": "app_prepareprint"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app",
+      "target": "app_removepagebreak"
     },
     {
       "relation": "contains",
@@ -1851,9 +1951,9 @@
       "source_file": "app.js",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_syncbackgroundchoices",
-      "confidence_score": 1.0
+      "target": "app_syncbackgroundchoices"
     },
     {
       "relation": "contains",
@@ -1861,9 +1961,9 @@
       "source_file": "app.js",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_updatebackgroundcontrols",
-      "confidence_score": 1.0
+      "target": "app_updatebackgroundcontrols"
     },
     {
       "relation": "contains",
@@ -1900,6 +2000,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_removepagebreak",
+      "target": "trame_newsletter_main_app"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
       "source_location": "L16",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1913,9 +2024,9 @@
       "source_file": "app.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_syncbackgroundchoices",
-      "target": "trame_newsletter_main_app",
-      "confidence_score": 1.0
+      "target": "trame_newsletter_main_app"
     },
     {
       "relation": "calls",
@@ -1924,9 +2035,9 @@
       "source_file": "app.js",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_updatebackgroundcontrols",
-      "target": "trame_newsletter_main_app",
-      "confidence_score": 1.0
+      "target": "trame_newsletter_main_app"
     },
     {
       "relation": "calls",
@@ -1957,9 +2068,9 @@
       "source_file": "app.js",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_updatebackgroundcontrols",
-      "target": "app_syncbackgroundchoices",
-      "confidence_score": 1.0
+      "target": "app_syncbackgroundchoices"
     },
     {
       "relation": "calls",
@@ -1968,9 +2079,9 @@
       "source_file": "app.js",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_render",
-      "target": "app_updatebackgroundcontrols",
-      "confidence_score": 1.0
+      "target": "app_updatebackgroundcontrols"
     },
     {
       "relation": "calls",
@@ -2015,6 +2126,17 @@
       "confidence_score": 1.0,
       "source": "app_linkify",
       "target": "app_slice"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
+      "source_location": "L97",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_render",
+      "target": "app_linkify"
     },
     {
       "relation": "calls",
@@ -2125,6 +2247,17 @@
       "weight": 1.0,
       "source": "export_docx_buildworddocument",
       "target": "app_render"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_removepagebreak",
+      "target": "app_schedule"
     },
     {
       "relation": "contains",

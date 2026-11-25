@@ -1,11 +1,11 @@
-# Graph Report - trame_newsletter-main  (2026-11-24)
+# Graph Report - trame_newsletter-main  (2026-11-25)
 
 ## Corpus Check
-- 3 files · ~485,418 words
+- 3 files · ~511,646 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 167 nodes · 318 edges · 12 communities (11 shown, 1 thin omitted)
+- 172 nodes · 326 edges · 12 communities (11 shown, 1 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
@@ -26,7 +26,7 @@
 1. `push()` - 25 edges
 2. `constructor()` - 20 edges
 3. `prepForXml()` - 17 edges
-4. `render()` - 12 edges
+4. `render()` - 13 edges
 5. `add()` - 11 edges
 6. `_objectSpread2()` - 10 edges
 7. `addRelationship()` - 10 edges
@@ -46,16 +46,16 @@
 ## Communities (12 total, 1 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.15
-Nodes (22): area, backgroundChoices, blocks(), clean(), editors, ids, images, linkify() (+14 more)
+Cohesion: 0.12
+Nodes (26): area, backgroundChoices, blocks(), clean(), editors, ids, images, linkify() (+18 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.14
-Nodes (28): add(), addChildElement(), addComments(), addCommentsExtended(), addCommentsIds(), addCustomProperty(), addDefaultRelationships(), addFooter() (+20 more)
+Cohesion: 0.13
+Nodes (29): add(), addChildElement(), addComments(), addCommentsExtended(), addCommentsIds(), addCustomProperty(), addDefaultRelationships(), addFooter() (+21 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.19
-Nodes (14): addSectionProperties(), createClick(), createConcreteNumberingInstance(), createDrawingClick(), get(), getCellWidth(), getSectionPropertiesFor(), getTarget() (+6 more)
+Cohesion: 0.21
+Nodes (13): addSectionProperties(), createClick(), createConcreteNumberingInstance(), createDrawingClick(), get(), getCellWidth(), getSectionPropertiesFor(), prepForXml() (+5 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.22
@@ -86,7 +86,7 @@ Cohesion: 0.67
 Nodes (3): deflateSync(), strToU8(), zipSync()
 
 ## Knowledge Gaps
-- **7 isolated node(s):** `ids`, `editors`, `images`, `pageBackgrounds`, `backgroundChoices` (+2 more)
+- **9 isolated node(s):** `ids`, `editors`, `images`, `photoSettings`, `photoPresets` (+4 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -97,13 +97,13 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Why does `constructor()` connect `Community 2` to `Community 1`, `Community 3`, `Community 4`, `Community 5`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `prepForXml()` connect `Community 3` to `Community 1`, `Community 2`, `Community 4`, `Community 5`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `ids`, `editors`, `images` to the rest of the system?**
-  _7 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _9 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.14666666666666667 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11954022988505747 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.03571428571428571 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.1402116402116402 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1330049261083744 - nodes in this community are weakly interconnected._
+- **Should `Community 5` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

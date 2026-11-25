@@ -1,7 +1,7 @@
 {
   "app.js": {
-    "mtime": 1795520799.7699065,
-    "ast_hash": "3e763ac30612271cc051ae348c04de1c",
+    "mtime": 1795604935.698544,
+    "ast_hash": "3b41be0bcac71faec366f88f04ec38d8",
     "semantic_hash": ""
   },
   ".github/workflows/static.yml": {
@@ -10,13 +10,13 @@
     "semantic_hash": ""
   },
   "Newsletter-autonome.html": {
-    "mtime": 1795520800.12912,
-    "ast_hash": "e4610f806d34d2cba378be8725ae08a4",
+    "mtime": 1795604936.2463846,
+    "ast_hash": "8123165a27a337cf6ef98733ff7a379c",
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1795520799.817121,
-    "ast_hash": "7fa9809206ea2a6c9d1a81645b7e60de",
+    "mtime": 1795604909.2923946,
+    "ast_hash": "63e4129c37564ec512d4670e7c9dfa2d",
     "semantic_hash": ""
   },
   "indexodl.html": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "export-docx.js": {
-    "mtime": 1795504971.9060516,
-    "ast_hash": "df8ed62f318596eed8acec10e06c2ca7",
+    "mtime": 1795602280.1422117,
+    "ast_hash": "66ef73fa72375961ac1202b1462eee86",
     "semantic_hash": ""
   },
   ".playwright-cli/page-2026-11-24T07-22-54-927Z.yml": {
@@ -132,6 +132,41 @@
   ".playwright-cli/page-2026-11-24T11-47-10-789Z.yml": {
     "mtime": 1795520830.7904966,
     "ast_hash": "68c608ecbdb43038c37ae8d3e8a66531",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-25T10-24-39-867Z.yml": {
+    "mtime": 1795602279.869693,
+    "ast_hash": "8003d83d85051343bceae67f2302c40f",
+    "semantic_hash": ""
+  },
+  "output/playwright/encart.png": {
+    "mtime": 1795602295.8227863,
+    "ast_hash": "2cdd41e2ad4b860050407d3ce1d7343c",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-25T10-25-23-107Z.yml": {
+    "mtime": 1795602323.10777,
+    "ast_hash": "f01aecec085ade2effb8bdd9d4f5b08d",
+    "semantic_hash": ""
+  },
+  "output/playwright/encart-page.png": {
+    "mtime": 1795602340.178759,
+    "ast_hash": "e02443136ddc03ac9953b4964b89d9b9",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-25T10-59-54-053Z.yml": {
+    "mtime": 1795604394.0556068,
+    "ast_hash": "5bbabee197ea133ebe87e2153f636a58",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-25T11-03-09-147Z.yml": {
+    "mtime": 1795604589.1492302,
+    "ast_hash": "5bbabee197ea133ebe87e2153f636a58",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-25T11-08-35-179Z.yml": {
+    "mtime": 1795604915.181573,
+    "ast_hash": "5bbabee197ea133ebe87e2153f636a58",
     "semantic_hash": ""
   }
 }
