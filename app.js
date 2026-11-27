@@ -202,7 +202,7 @@ function preparePrint(){
  // Print fragmentation can otherwise move a bottom-aligned float to another page.
  area.querySelectorAll('.sheet').forEach(sheet=>sheet.querySelectorAll('.flow .photo').forEach(im=>{
   const copy=im.cloneNode();copy.className='print-photo';copy.removeAttribute('style');
-  const rect=im.getBoundingClientRect();Object.assign(copy.style,{top:im.dataset.printTop+'px',left:im.dataset.printLeft+'px',width:rect.width+'px',height:rect.height+'px'});if(im.parentElement.matches('a.photo-link')){const link=im.parentElement.cloneNode(false);link.append(copy);sheet.append(link)}else sheet.append(copy);
+  const rect=im.getBoundingClientRect();Object.assign(copy.style,{top:im.dataset.printTop+'px',left:im.dataset.printLeft+'px',width:rect.width+'px',height:rect.height+'px'});if(im.parentElement.matches('a.photo-link')){const link=im.parentElement.cloneNode(false);link.className='print-photo-link';Object.assign(link.style,{position:'absolute',top:im.dataset.printTop+'px',left:im.dataset.printLeft+'px',width:rect.width+'px',height:rect.height+'px'});Object.assign(copy.style,{position:'static',top:'auto',left:'auto'});link.append(copy);sheet.append(link)}else sheet.append(copy);
   const gap=parseFloat(im.style.marginTop)||0;
   if(gap>2){im.style.height=(rect.height+gap)+'px';im.style.maxHeight='none';im.style.marginTop='0';im.style.shapeOutside='inset('+gap+'px -24px -8px -24px) border-box'}
  }));

@@ -167,6 +167,9 @@
 .page-break-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 0;flex-shrink:0}
 .page-break-controls #insertPageBreak{padding:8px 12px;border:1px solid #315b8f;border-radius:5px;background:#eff5fb;color:#23456e;font-size:12px;font-weight:700;cursor:pointer}
 .page-break-controls .field-note{flex:1 1 180px;margin:0}
+
+.print-photo-link{display:none}
+@media print{.sheet .print-photo-link{display:block;z-index:1}.conclusion-photos .photo-link{display:block;width:fit-content;justify-self:center}.conclusion-photos .photo-link img{display:block}}
 </style></head>
   <body>
     <main class="app">
@@ -30631,7 +30634,7 @@ function preparePrint(){
  // Print fragmentation can otherwise move a bottom-aligned float to another page.
  area.querySelectorAll('.sheet').forEach(sheet=>sheet.querySelectorAll('.flow .photo').forEach(im=>{
   const copy=im.cloneNode();copy.className='print-photo';copy.removeAttribute('style');
-  const rect=im.getBoundingClientRect();Object.assign(copy.style,{top:im.dataset.printTop+'px',left:im.dataset.printLeft+'px',width:rect.width+'px',height:rect.height+'px'});if(im.parentElement.matches('a.photo-link')){const link=im.parentElement.cloneNode(false);link.append(copy);sheet.append(link)}else sheet.append(copy);
+  const rect=im.getBoundingClientRect();Object.assign(copy.style,{top:im.dataset.printTop+'px',left:im.dataset.printLeft+'px',width:rect.width+'px',height:rect.height+'px'});if(im.parentElement.matches('a.photo-link')){const link=im.parentElement.cloneNode(false);link.className='print-photo-link';Object.assign(link.style,{position:'absolute',top:im.dataset.printTop+'px',left:im.dataset.printLeft+'px',width:rect.width+'px',height:rect.height+'px'});Object.assign(copy.style,{position:'static',top:'auto',left:'auto'});link.append(copy);sheet.append(link)}else sheet.append(copy);
   const gap=parseFloat(im.style.marginTop)||0;
   if(gap>2){im.style.height=(rect.height+gap)+'px';im.style.maxHeight='none';im.style.marginTop='0';im.style.shapeOutside='inset('+gap+'px -24px -8px -24px) border-box'}
  }));
