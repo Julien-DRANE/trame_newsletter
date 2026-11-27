@@ -1,7 +1,7 @@
 {
   "app.js": {
-    "mtime": 1795604935.698544,
-    "ast_hash": "3b41be0bcac71faec366f88f04ec38d8",
+    "mtime": 1795769659.0577893,
+    "ast_hash": "ecf079deec06c115fcd4c35289d8c72f",
     "semantic_hash": ""
   },
   ".github/workflows/static.yml": {
@@ -10,13 +10,13 @@
     "semantic_hash": ""
   },
   "Newsletter-autonome.html": {
-    "mtime": 1795604936.2463846,
-    "ast_hash": "8123165a27a337cf6ef98733ff7a379c",
+    "mtime": 1795769713.7526443,
+    "ast_hash": "b9f456bad61242022f310d76ea29661e",
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1795604909.2923946,
-    "ast_hash": "63e4129c37564ec512d4670e7c9dfa2d",
+    "mtime": 1795769713.4196448,
+    "ast_hash": "2e4e813013c83cfe12756ab1d97134b7",
     "semantic_hash": ""
   },
   "indexodl.html": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "export-docx.js": {
-    "mtime": 1795602280.1422117,
-    "ast_hash": "66ef73fa72375961ac1202b1462eee86",
+    "mtime": 1795769191.9079099,
+    "ast_hash": "386984aa8da23dd757bcc2c94cc05ee7",
     "semantic_hash": ""
   },
   ".playwright-cli/page-2026-11-24T07-22-54-927Z.yml": {
@@ -167,6 +167,71 @@
   ".playwright-cli/page-2026-11-25T11-08-35-179Z.yml": {
     "mtime": 1795604915.181573,
     "ast_hash": "5bbabee197ea133ebe87e2153f636a58",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-32-17-706Z.yml": {
+    "mtime": 1795768337.7084439,
+    "ast_hash": "bfa874e66705c89638a8759d245a0ec2",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-32-29-063Z.yml": {
+    "mtime": 1795768349.0634208,
+    "ast_hash": "43949f8b8ff87cd823ec169e01576b03",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-32-35-101Z.yml": {
+    "mtime": 1795768355.1014085,
+    "ast_hash": "8de89416bbea3b86dfbdae5ffb41ea39",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-34-26-762Z.yml": {
+    "mtime": 1795768466.762927,
+    "ast_hash": "f0765de80d807906232ed86132e4b5c3",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-34-54-819Z.yml": {
+    "mtime": 1795768494.8199744,
+    "ast_hash": "99c837eaceee7cf5a8980d52432ec87d",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-35-18-188Z.yml": {
+    "mtime": 1795768518.1880765,
+    "ast_hash": "071e8d5baf9a222f502a99b0d63d5923",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-36-47-387Z.yml": {
+    "mtime": 1795768607.387895,
+    "ast_hash": "bfa874e66705c89638a8759d245a0ec2",
+    "semantic_hash": ""
+  },
+  "assets/backgrounds/cercles-sans-bande.png": {
+    "mtime": 1795769073.4687133,
+    "ast_hash": "8c295af8d9bfb52ba35c9e9fb9887ca4",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-46-34-294Z.yml": {
+    "mtime": 1795769194.296215,
+    "ast_hash": "5242b6f78bf8eb05d3495df65367fd79",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-46-58-120Z.yml": {
+    "mtime": 1795769218.1213694,
+    "ast_hash": "27d07af23312cda61575f5eb933f62d1",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-54-21-366Z.yml": {
+    "mtime": 1795769661.3678992,
+    "ast_hash": "954644ee9851c16197035e0ab07d111b",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-54-45-301Z.yml": {
+    "mtime": 1795769685.301702,
+    "ast_hash": "766f110f9fde7551f3190dc9dafcc064",
+    "semantic_hash": ""
+  },
+  ".playwright-cli/page-2026-11-27T08-55-15-642Z.yml": {
+    "mtime": 1795769715.6432528,
+    "ast_hash": "3a390095253985e0b6447a3901e97166",
     "semantic_hash": ""
   }
 }

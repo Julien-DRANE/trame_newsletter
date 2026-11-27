@@ -19,7 +19,7 @@ async function buildWordDocument(){
  function textParagraph(node){
   const style=getComputedStyle(node),tag=node.tagName;
   const heading={H1:D.HeadingLevel.TITLE,H2:D.HeadingLevel.HEADING_1,H3:D.HeadingLevel.HEADING_2}[tag];
-  return new D.Paragraph({children:runs(node),heading,alignment:heading?D.AlignmentType.LEFT:({center:D.AlignmentType.CENTER,right:D.AlignmentType.RIGHT,justify:D.AlignmentType.JUSTIFIED}[style.textAlign]||D.AlignmentType.LEFT),spacing:{after:180,line:320},bullet:tag==='LI'?{level:0}:undefined});
+  return new D.Paragraph({children:runs(node),heading,alignment:heading?D.AlignmentType.LEFT:({center:D.AlignmentType.CENTER,right:D.AlignmentType.RIGHT,justify:D.AlignmentType.JUSTIFIED}[style.textAlign]||D.AlignmentType.LEFT),spacing:{after:180,line:Math.round((parseFloat(style.lineHeight)/parseFloat(style.fontSize)||320/240)*240)},bullet:tag==='LI'&&style.listStyleType!=='none'?{level:0}:undefined});
  }
  async function imageRun(im,sheet){
   const source=new Image();await new Promise((resolve,reject)=>{source.onload=resolve;source.onerror=reject;source.src=im.src});
@@ -39,7 +39,7 @@ async function buildWordDocument(){
     frame:{type:'absolute',position:{x:Math.round((r.left-paper.left+16)*15),y:Math.round((r.top-paper.top+14)*15)},width:Math.round((r.width-32)*15),height:Math.round((r.height-28)*15),anchor:{horizontal:D.FrameAnchorType.PAGE,vertical:D.FrameAnchorType.PAGE},wrap:D.FrameWrap.AROUND,space:{horizontal:360,vertical:120}},
     border:{top:edge,bottom:edge,left:edge,right:edge},shading:{fill:'F2F5F9'},spacing:{after:0,line:280}}));return;
   }
-  if(node.tagName==='IMG'){paragraphs.push(new D.Paragraph({children:[await imageRun(node,sheet)],spacing:{after:120}}));return}
+  if(node.tagName==='IMG'){const image=await imageRun(node,sheet);const href=webLink(node.closest('a.photo-link')?.getAttribute('href')||'');paragraphs.push(new D.Paragraph({children:[href?new D.ExternalHyperlink({link:href,children:[image]}):image],spacing:{after:120}}));return}
   if(node.matches('p,h1,h2,h3,h4,li,blockquote,.category,.metadata,.subtitle')){
    if(node.matches('blockquote')&&node.querySelector('p,div')){for(const child of node.childNodes)await walk(child,sheet)}else paragraphs.push(textParagraph(node));return;
   }
